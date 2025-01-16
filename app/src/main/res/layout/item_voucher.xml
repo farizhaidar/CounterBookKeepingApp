@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:radius="8dp"
+    android:elevation="4dp"
+    android:backgroundTint="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Voucher Name -->
+        <TextView
+            android:id="@+id/tvVoucherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voucher Name"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- Voucher Price -->
+        <TextView
+            android:id="@+id/tvVoucherPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: Rp10,000"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

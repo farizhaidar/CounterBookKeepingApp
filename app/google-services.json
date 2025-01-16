@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840727758805",
+    "project_id": "pembukuan-konter",
+    "storage_bucket": "pembukuan-konter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840727758805:android:eb5d0c92454489aa569f5c",
+        "android_client_info": {
+          "package_name": "com.bangkit.konter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1BjHIEw8aSUPguXDmwUrvZJhw8Xn6wEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

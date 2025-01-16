@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    tools:context=".VoucherActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voucher"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF6200EE"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Grid Layout for Buttons -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:columnCount="2"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Button 1 -->
+        <Button
+            android:id="@+id/btnProduct1"
+            android:layout_width="0dp"
+            android:layout_height="68dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp"
+            android:text="Voucher 1"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <!-- Button 2 -->
+        <Button
+            android:id="@+id/btnProduct2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="Voucher 2"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp" />
+
+        <!-- Button 3 -->
+        <Button
+            android:id="@+id/btnProduct3"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp"
+            android:text="Voucher 3"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <!-- Button 4 -->
+        <Button
+            android:id="@+id/btnProduct4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="Voucher 4"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp" />
+
+        <!-- Button 5 -->
+        <Button
+            android:id="@+id/btnProduct5"
+            android:layout_width="0dp"
+            android:layout_height="74dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp"
+            android:text="Voucher 5"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <!-- Button 6 -->
+        <Button
+            android:id="@+id/btnProduct6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="Voucher 6"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF6200EE"
+            android:elevation="6dp" />
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voucher Name"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: Rp10,000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCostPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost Price: Rp8,000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvProfit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profit: Rp2,000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCreatedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created At: 2025-01-17 14:30:00"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
