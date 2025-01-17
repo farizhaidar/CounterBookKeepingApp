@@ -5,18 +5,30 @@
     android:padding="8dp"
     android:background="#EFEFEF">
 
+    <!-- Tanggal -->
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="Tanggal"
         android:textStyle="bold"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:paddingBottom="4dp" />
 
+    <!-- Total Profit -->
     <TextView
         android:id="@+id/tvTotalProfit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Profit"
+        android:text="Total Profit: Rp0"
+        android:textSize="14sp"
+        android:paddingBottom="4dp" />
+
+    <!-- Total Pengeluaran -->
+    <TextView
+        android:id="@+id/tvTotalSpending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Pengeluaran: Rp0"
         android:textSize="14sp" />
 </LinearLayout>

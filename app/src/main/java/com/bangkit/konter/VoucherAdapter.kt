@@ -1,5 +1,6 @@
 package com.bangkit.konter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,16 +24,17 @@ class VoucherAdapter(
 
     override fun onBindViewHolder(holder: VoucherViewHolder, position: Int) {
         val voucher = voucherList[position]
+        Log.d("VoucherAdapter", "Voucher: $voucher")
         holder.tvVoucherName.text = voucher.name
         holder.tvVoucherPrice.text = "Price: ${voucher.price}"
-
-        // Set click listener
         holder.itemView.setOnClickListener {
-            onItemClick(voucher)
+            onItemClick(voucher) // Memanggil fungsi onItemClick saat item diklik
         }
+
     }
 
     override fun getItemCount(): Int {
         return voucherList.size
     }
+
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bangkit.konter.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,6 +25,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_history -> {
                     loadFragment(HistoryFragment())
+                    true
+                }
+                R.id.nav_katalog -> {
+                    loadFragment(KatalogFragment())
                     true
                 }
                 else -> false

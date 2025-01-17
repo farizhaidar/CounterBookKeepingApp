@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <!-- Button untuk Voucher -->
+    <Button
+        android:id="@+id/btnVoucher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voucher"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Button untuk Kartu Perdana -->
+    <Button
+        android:id="@+id/btnKartuPerdana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kartu Perdana"
+        android:layout_below="@id/btnVoucher"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Button untuk Aksesoris -->
+    <Button
+        android:id="@+id/btnAksesoris"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aksesoris"
+        android:layout_below="@id/btnKartuPerdana"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Floating Action Button untuk menambahkan data -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:contentDescription="Add Product"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/purple_500" />
+</RelativeLayout>

@@ -1,7 +1,8 @@
 package com.bangkit.konter
 
 sealed class HistoryItem {
-    data class Header(val date: String, val totalProfit: Double) : HistoryItem()
+    data class Header(val date: String, val totalProfit: Double,val totalSpending: Double
+    ) : HistoryItem()
     data class VoucherItem(
         val id: String,
         val name: String,

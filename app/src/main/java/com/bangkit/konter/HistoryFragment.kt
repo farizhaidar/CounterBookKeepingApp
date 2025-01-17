@@ -46,9 +46,10 @@ class HistoryFragment : Fragment() {
             .orderBy("created_at", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
-                val groupedHistory = mutableListOf<HistoryItem>() // Data dengan header per hari
+                val groupedHistory = mutableListOf<HistoryItem>()
                 var currentDay = ""
                 var dailyProfit = 0.0
+                var dailySpending = 0.0 // Variabel untuk menghitung pengeluaran harian
 
                 for (document in documents) {
                     val id = document.id
@@ -64,24 +65,35 @@ class HistoryFragment : Fragment() {
                         if (currentDay.isNotEmpty()) {
                             groupedHistory.add(
                                 0,
-                                HistoryItem.Header(currentDay, dailyProfit)
+                                HistoryItem.Header(
+                                    date = currentDay,
+                                    totalProfit = dailyProfit,
+                                    totalSpending = dailySpending // Tambahkan total pengeluaran
+                                )
                             )
                         }
                         currentDay = dateOnly
                         dailyProfit = 0.0
+                        dailySpending = 0.0
                     }
 
                     dailyProfit += profit
+                    dailySpending += price // Tambahkan harga jual ke pengeluaran harian
                     groupedHistory.add(
                         0,
                         HistoryItem.VoucherItem(id, name, price, costPrice, profit, createdAt)
                     )
                 }
 
+                // Tambahkan header untuk hari terakhir
                 if (currentDay.isNotEmpty()) {
                     groupedHistory.add(
                         0,
-                        HistoryItem.Header(currentDay, dailyProfit)
+                        HistoryItem.Header(
+                            date = currentDay,
+                            totalProfit = dailyProfit,
+                            totalSpending = dailySpending // Tambahkan total pengeluaran
+                        )
                     )
                 }
 

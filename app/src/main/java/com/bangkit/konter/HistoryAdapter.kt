@@ -50,10 +50,12 @@ class HistoryAdapter(private var historyList: List<HistoryItem>) :
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val dateTextView: TextView = view.findViewById(R.id.tvDate)
         private val totalProfitTextView: TextView = view.findViewById(R.id.tvTotalProfit)
+        private val totalSpendingTextView: TextView = view.findViewById(R.id.tvTotalSpending)
 
         fun bind(header: HistoryItem.Header) {
             dateTextView.text = header.date
             totalProfitTextView.text = "Total Profit: Rp${header.totalProfit}"
+            totalSpendingTextView.text = "Total Pengeluaran: Rp${header.totalSpending}" // Tambahkan ini
         }
     }
 
