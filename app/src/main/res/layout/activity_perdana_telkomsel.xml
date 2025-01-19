@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".voucher.TelkomselActivity">
+    tools:context=".kartu.PerdanaTelkomselActivity">
 
     <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Telkomsel Vouchers"
+        android:text="Perdana Telkomsel"
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -54,7 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:hint="Search vouchers..."
+                android:hint="Search..."
                 android:background="@android:color/transparent"
                 android:textColor="@color/primary_text_color"
                 android:textColorHint="@color/secondary_text_color"

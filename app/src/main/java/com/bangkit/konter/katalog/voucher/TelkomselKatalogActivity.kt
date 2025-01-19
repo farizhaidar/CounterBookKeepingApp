@@ -1,64 +1,84 @@
-package com.bangkit.konter
+package com.bangkit.konter.katalog.voucher
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.konter.KatalogAdapter
+import com.bangkit.konter.R
+import com.bangkit.konter.Voucher
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class TelkomselActivity : AppCompatActivity() {
+class TelkomselKatalogActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var voucherAdapter: VoucherAdapter
-    private lateinit var searchView: androidx.appcompat.widget.SearchView
+    private lateinit var katalogAdapter: KatalogAdapter
     private lateinit var firestore: FirebaseFirestore
 
     private val voucherList = mutableListOf<Voucher>()
     private val filteredList = mutableListOf<Voucher>()
+    private lateinit var etSearchBar: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_telkomsel)
+        setContentView(R.layout.activity_telkomsel_katalog)
 
         firestore = FirebaseFirestore.getInstance()
+        etSearchBar = findViewById(R.id.etSearchBar)
 
-        searchView = findViewById(R.id.searchView)
         recyclerView = findViewById(R.id.recyclerView)
 
+        etSearchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filterAndSortVouchers(s.toString())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
         setupRecyclerView()
-        setupSearchView()
         fetchVouchersFromFirestore()
     }
 
     private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        voucherAdapter = VoucherAdapter(filteredList) { voucher ->
-            showVoucherDialog(voucher)
-        }
-        recyclerView.adapter = voucherAdapter
-    }
-
-    private fun setupSearchView() {
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                filterAndSortVouchers(query)
-                return true
+        katalogAdapter = KatalogAdapter(filteredList,
+            onEditClicked = { voucher ->
+                // Navigasi ke halaman update
+                val intent = Intent(this, UpdateVoucherActivity::class.java).apply {
+                    putExtra("voucherId", voucher.id)
+                    putExtra("name", voucher.name)
+                    putExtra("sellingPrice", voucher.sellingPrice)
+                    putExtra("costPrice", voucher.costPrice)
+                }
+                startActivity(intent)
+            },
+            onDeleteClicked = { voucher ->
+                // Konfirmasi hapus
+                AlertDialog.Builder(this)
+                    .setTitle("Konfirmasi Hapus")
+                    .setMessage("Apakah Anda yakin ingin menghapus voucher ini?")
+                    .setPositiveButton("Ya") { _, _ ->
+                        deleteVoucherFromFirestore(voucher.id)
+                    }
+                    .setNegativeButton("Tidak", null)
+                    .show()
             }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                filterAndSortVouchers(newText)
-                return true
-            }
-        })
+        )
+        recyclerView.adapter = katalogAdapter
     }
 
     private fun fetchVouchersFromFirestore() {
@@ -74,10 +94,11 @@ class TelkomselActivity : AppCompatActivity() {
 
     private fun populateVoucherList(querySnapshot: QuerySnapshot) {
         val voucherItems = querySnapshot.documents.mapNotNull { doc ->
+            val id = doc.id
             val name = doc.getString("name") ?: return@mapNotNull null
             val sellingPrice = doc.getDouble("sellingPrice") ?: return@mapNotNull null
             val costPrice = doc.getDouble("costPrice") ?: return@mapNotNull null
-            Voucher(name, sellingPrice, costPrice)
+            Voucher(id, name, sellingPrice, costPrice)
         }
         voucherList.clear()
         voucherList.addAll(voucherItems)
@@ -90,13 +111,13 @@ class TelkomselActivity : AppCompatActivity() {
         val filteredVouchers = voucherList.filter { it.name.lowercase().contains(input) }
 
         val sortedVouchers = filteredVouchers.sortedWith(compareBy(
-            { extractNumericValue(it.name) },
-            { extractDays(it.name) }
+            { extractDays(it.name) },
+            { extractNumericValue(it.name) }
         ))
 
         filteredList.clear()
         filteredList.addAll(sortedVouchers)
-        voucherAdapter.notifyDataSetChanged()
+        katalogAdapter.notifyDataSetChanged()
     }
 
     private fun extractNumericValue(name: String): Double {
@@ -137,11 +158,11 @@ class TelkomselActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Input Quantity")
             .setView(dialogView)
-            .setPositiveButton("Simpen") { _, _ ->
+            .setPositiveButton("Update") { _, _ ->
                 val quantity = tvQuantity.text.toString().toInt()
 
-                val totalPrice = voucher.price * quantity
-                val totalProfit = calculateProfit(voucher.price, voucher.costPrice) * quantity
+                val totalPrice = voucher.sellingPrice * quantity
+                val totalProfit = calculateProfit(voucher.sellingPrice, voucher.costPrice) * quantity
 
                 val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                 val currentTime = dateFormat.format(Date())
@@ -152,23 +173,41 @@ class TelkomselActivity : AppCompatActivity() {
                     "cost_price" to voucher.costPrice * quantity,
                     "profit" to totalProfit,
                     "quantity" to quantity,
-                    "created_at" to currentTime
+                    "updated_at" to currentTime
                 )
 
-                saveVoucherToFirestore(voucherData)
+                updateVoucherInFirestore(voucher.id, voucherData)
             }
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+            .setNegativeButton("Delete") { _, _ ->
+                deleteVoucherFromFirestore(voucher.id)
+            }
+            .setNeutralButton("Cancel", null)
             .show()
     }
 
-    private fun saveVoucherToFirestore(voucherData: Map<String, Any>) {
-        firestore.collection("vouchers")
-            .add(voucherData)
+    private fun updateVoucherInFirestore(voucherId: String, voucherData: Map<String, Any>) {
+        firestore.collection("v.telkomsel")
+            .document(voucherId)
+            .update(voucherData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Data disimpenn!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Voucher updated successfully!", Toast.LENGTH_SHORT).show()
+                fetchVouchersFromFirestore()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to save voucher: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to update voucher: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun deleteVoucherFromFirestore(voucherId: String) {
+        firestore.collection("v.telkomsel")
+            .document(voucherId)
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Voucher deleted successfully!", Toast.LENGTH_SHORT).show()
+                fetchVouchersFromFirestore()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Failed to delete voucher: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 

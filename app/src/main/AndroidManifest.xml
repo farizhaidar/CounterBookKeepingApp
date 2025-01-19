@@ -15,10 +15,37 @@
         android:theme="@style/Theme.Konter"
         tools:targetApi="31">
         <activity
+            android:name=".kartu.PerdanaTelkomselActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.voucher.UpdateVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.voucher.TelkomselKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.ByuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.XLActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.SmartfrenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.AxisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.TriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".voucher.IndosatActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddProductActivity"
             android:exported="false" />
         <activity
-            android:name=".TelkomselActivity"
+            android:name=".voucher.TelkomselActivity"
             android:exported="false" />
         <activity
             android:name=".AksesorisActivity"

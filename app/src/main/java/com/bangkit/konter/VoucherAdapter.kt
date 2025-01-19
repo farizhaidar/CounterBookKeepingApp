@@ -26,7 +26,7 @@ class VoucherAdapter(
         val voucher = voucherList[position]
         Log.d("VoucherAdapter", "Voucher: $voucher")
         holder.tvVoucherName.text = voucher.name
-        holder.tvVoucherPrice.text = "Price: ${voucher.price}"
+        holder.tvVoucherPrice.text = "Price: ${voucher.sellingPrice}"
         holder.itemView.setOnClickListener {
             onItemClick(voucher) // Memanggil fungsi onItemClick saat item diklik
         }

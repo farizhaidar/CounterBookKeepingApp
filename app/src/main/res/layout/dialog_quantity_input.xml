@@ -16,6 +16,9 @@
             android:id="@+id/btnDecrease"
             android:layout_width="59dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_color"
+            android:textColor="@color/primary_text_color"
+            android:textStyle="bold"
             android:text="-" />
 
         <TextView
@@ -30,6 +33,9 @@
             android:id="@+id/btnIncrease"
             android:layout_width="58dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_color"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="+" />
     </LinearLayout>
 </LinearLayout>

@@ -1,7 +1,9 @@
 package com.bangkit.konter
 
 data class Voucher(
+    val id: String = "",
     val name: String,
-    val price: Double, // Perbarui tipe data dari String ke Double
-    val costPrice: Double
+    val sellingPrice: Double,
+    val costPrice: Double // Pastikan tipe data sesuai dengan data di Firestore
 )
+
