@@ -1,31 +1,12 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FAFAFA"
+    android:clickable="true"
     android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Voucher"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- Card View for Voucher -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTelkomsel"
         android:layout_width="match_parent"
@@ -39,7 +20,6 @@
         android:layout_marginEnd="2dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_below="@+id/tvTitle"
         android:background="@android:color/white">
 
         <LinearLayout
@@ -55,7 +35,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/telkomsel"
                 android:contentDescription="Voucher"
-                />
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -257,41 +237,40 @@
                 android:layout_marginStart="16dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>    <androidx.cardview.widget.CardView
-    android:id="@+id/cardByu"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    app:cardCornerRadius="12dp"
-    android:layout_marginStart="2dp"
-    android:layout_marginEnd="2dp"
-    app:cardElevation="4dp"
-    android:layout_below="@id/cardSmartfren"
-    android:background="@android:color/white">
-
-    <LinearLayout
+        android:id="@+id/cardByu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        android:layout_below="@id/cardSmartfren"
+        android:background="@android:color/white">
 
-        <ImageView
-            android:id="@+id/ivByu"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/byu"
-            android:contentDescription="Aksesoris" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Byu"
-            android:textSize="18sp"
-            android:textColor="#3E3E3E"
-            android:fontFamily="@font/poppinsmedium"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-</LinearLayout>
-    </ScrollView>
+            <ImageView
+                android:id="@+id/ivByu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/byu"
+                android:contentDescription="Aksesoris" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Byu"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

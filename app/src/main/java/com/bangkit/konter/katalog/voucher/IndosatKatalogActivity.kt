@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,7 @@ import com.bangkit.konter.Voucher
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
-class TelkomselKatalogActivity : AppCompatActivity() {
+class IndosatKatalogActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var katalogAdapter: KatalogAdapter
@@ -25,6 +26,7 @@ class TelkomselKatalogActivity : AppCompatActivity() {
     private val voucherList = mutableListOf<Voucher>()
     private val filteredList = mutableListOf<Voucher>()
     private lateinit var etSearchBar: EditText
+    private lateinit var tvTitle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,9 @@ class TelkomselKatalogActivity : AppCompatActivity() {
         etSearchBar = findViewById(R.id.etSearchBar)
 
         recyclerView = findViewById(R.id.recyclerView)
+        tvTitle = findViewById(R.id.tvTitle)
 
+        tvTitle.text = "Indosat"
         etSearchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -57,7 +61,7 @@ class TelkomselKatalogActivity : AppCompatActivity() {
                     putExtra("name", voucher.name)
                     putExtra("sellingPrice", voucher.sellingPrice)
                     putExtra("costPrice", voucher.costPrice)
-                    putExtra("collectionName", "v.telkomsel")  // Kirimkan koleksi
+                    putExtra("collectionName", "v.indosat")  // Kirimkan koleksi
                 }
                 startActivity(intent)
             },
@@ -77,7 +81,7 @@ class TelkomselKatalogActivity : AppCompatActivity() {
     }
 
     private fun fetchVouchersFromFirestore() {
-        val telkomselTask = firestore.collection("v.telkomsel").get()
+        val telkomselTask = firestore.collection("v.indosat").get()
 
         telkomselTask
             .addOnSuccessListener { telkomselData ->
@@ -132,9 +136,8 @@ class TelkomselKatalogActivity : AppCompatActivity() {
         return regex.find(name.lowercase())?.groups?.get(1)?.value?.toIntOrNull() ?: Int.MAX_VALUE
     }
 
-
     private fun deleteVoucherFromFirestore(voucherId: String) {
-        firestore.collection("v.telkomsel")
+        firestore.collection("v.indosat")
             .document(voucherId)
             .delete()
             .addOnSuccessListener {
@@ -146,7 +149,4 @@ class TelkomselKatalogActivity : AppCompatActivity() {
             }
     }
 
-    private fun calculateProfit(sellingPrice: Double, costPrice: Double): Double {
-        return sellingPrice - costPrice
-    }
 }

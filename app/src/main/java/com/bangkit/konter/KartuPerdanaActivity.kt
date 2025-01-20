@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.konter.databinding.ActivityKartuPerdanaBinding
+import com.bangkit.konter.kartu.PerdanaAxisActivity
+import com.bangkit.konter.kartu.PerdanaByuActivity
+import com.bangkit.konter.kartu.PerdanaIndosatActivity
+import com.bangkit.konter.kartu.PerdanaSmartfrenActivity
 import com.bangkit.konter.kartu.PerdanaTelkomselActivity
-import com.bangkit.konter.voucher.AxisActivity
-import com.bangkit.konter.voucher.ByuActivity
-import com.bangkit.konter.voucher.IndosatActivity
-import com.bangkit.konter.voucher.SmartfrenActivity
-import com.bangkit.konter.voucher.TriActivity
-import com.bangkit.konter.voucher.XLActivity
+import com.bangkit.konter.kartu.PerdanaTriActivity
+import com.bangkit.konter.kartu.PerdanaXLActivity
 
 class KartuPerdanaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityKartuPerdanaBinding
@@ -37,22 +37,22 @@ class KartuPerdanaActivity : AppCompatActivity() {
             val intent = Intent(this, PerdanaTelkomselActivity::class.java)
             startActivity(intent)        }
         binding.btnProduct2.setOnClickListener {
-            val intent = Intent(this, XLActivity::class.java)
+            val intent = Intent(this, PerdanaXLActivity::class.java)
             startActivity(intent)  }
         binding.btnProduct3.setOnClickListener {
-            val intent = Intent(this, IndosatActivity::class.java)
+            val intent = Intent(this, PerdanaIndosatActivity::class.java)
             startActivity(intent)  }
         binding.btnProduct4.setOnClickListener {
-            val intent = Intent(this, AxisActivity::class.java)
+            val intent = Intent(this, PerdanaAxisActivity::class.java)
             startActivity(intent)  }
         binding.btnProduct5.setOnClickListener {
-            val intent = Intent(this, TriActivity::class.java)
+            val intent = Intent(this, PerdanaTriActivity::class.java)
             startActivity(intent)  }
         binding.btnProduct6.setOnClickListener {
-            val intent = Intent(this, SmartfrenActivity::class.java)
+            val intent = Intent(this, PerdanaSmartfrenActivity::class.java)
             startActivity(intent)  }
         binding.btnProduct7.setOnClickListener {
-            val intent = Intent(this, ByuActivity::class.java)
+            val intent = Intent(this, PerdanaByuActivity::class.java)
             startActivity(intent)  }
     }
 

@@ -11,11 +11,11 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="History"
+        android:text="Transaksi"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/mango"
         android:textColor="@android:color/white" />
 
     <!-- RecyclerView -->

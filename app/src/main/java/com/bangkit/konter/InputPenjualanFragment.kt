@@ -2,10 +2,10 @@ package com.bangkit.konter
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bangkit.konter.databinding.FragmentInputPenjualanBinding
 
 class InputPenjualanFragment : Fragment() {
@@ -24,17 +24,17 @@ class InputPenjualanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnVoucher.setOnClickListener {
+        binding.cardVoucher.setOnClickListener {
             val intent = Intent(requireContext(), VoucherActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnKartuPerdana.setOnClickListener {
+        binding.cardKartuPerdana.setOnClickListener {
             val intent = Intent(requireContext(), KartuPerdanaActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnAksesoris.setOnClickListener {
+        binding.cardAksesoris.setOnClickListener {
             val intent = Intent(requireContext(), AksesorisActivity::class.java)
             startActivity(intent)
         }

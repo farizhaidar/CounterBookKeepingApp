@@ -1,72 +1,142 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F5F5F5"
-    tools:context=".InputPenjualanActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAFAFA"
+    android:clickable="true"
+    android:padding="16dp">
 
-    <!-- Title -->
+    <!-- Header Title -->
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Input Penjualan"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FF6200EE"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:textColor="#3E3E3E"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
 
-    <!-- Button Voucher -->
-    <Button
-        android:id="@+id/btnVoucher"
-        android:layout_width="0dp"
+    <!-- Card View for Voucher -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVoucher"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voucher"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF6200EE"
-        android:padding="16dp"
-        android:elevation="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_below="@id/tvHeader"
+        android:padding="4dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@android:color/white">
 
-    <!-- Button Kartu Perdana -->
-    <Button
-        android:id="@+id/btnKartuPerdana"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Kartu Perdana"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF6200EE"
-        android:padding="16dp"
-        android:elevation="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnVoucher"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-    <!-- Button Aksesoris -->
-    <Button
-        android:id="@+id/btnAksesoris"
-        android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/ivVoucher"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_voucher"
+                android:contentDescription="Voucher"
+                app:tint="#FF5722" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voucher"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for Kartu Perdana -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardKartuPerdana"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aksesoris"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF6200EE"
-        android:padding="16dp"
-        android:elevation="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnKartuPerdana"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+
+        app:cardElevation="4dp"
+        android:layout_below="@id/cardVoucher"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivKartuPerdana"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_sim_card"
+                android:contentDescription="Kartu Perdana" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kartu Perdana"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for Aksesoris -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAksesoris"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        android:layout_below="@id/cardKartuPerdana"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivAksesoris"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_headphones"
+                android:contentDescription="Aksesoris" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aksesoris"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

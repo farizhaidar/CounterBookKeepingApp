@@ -2,37 +2,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F5F5F5"
-
+    android:background="#FAFAFA"
+    android:clickable="true"
     android:padding="16dp">
 
-    <!-- Button untuk Voucher -->
-    <Button
-        android:id="@+id/btnVoucher"
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KATALOG"
+        android:textSize="24sp"
+        android:textColor="#3E3E3E"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Card View for Voucher -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVoucher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voucher"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_below="@id/tvHeader"
+        android:background="@android:color/white">
 
-    <!-- Button untuk Kartu Perdana -->
-    <Button
-        android:id="@+id/btnKartuPerdana"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivVoucher"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_voucher"
+                android:contentDescription="Voucher"
+                app:tint="#FF5722" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/voucher_kartu_perdana"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <!-- Card View for Aksesoris -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAksesoris"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kartu Perdana"
-        android:layout_below="@id/btnVoucher"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
 
-    <!-- Button untuk Aksesoris -->
-    <Button
-        android:id="@+id/btnAksesoris"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aksesoris"
-        android:layout_below="@id/btnKartuPerdana"
-        android:layout_marginBottom="16dp" />
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_below="@id/cardVoucher"
+        android:background="@android:color/white">
 
-    <!-- Floating Action Button untuk menambahkan data -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivAksesoris"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_headphones"
+                android:contentDescription="Aksesoris" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aksesoris"
+                android:textSize="18sp"
+                android:textColor="#3E3E3E"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddProduct"
         android:layout_width="wrap_content"
@@ -42,5 +108,5 @@
         android:layout_margin="16dp"
         android:contentDescription="Add Product"
         android:src="@drawable/ic_add"
-        app:backgroundTint="@color/purple_500" />
+        app:backgroundTint="#FF5722" />
 </RelativeLayout>

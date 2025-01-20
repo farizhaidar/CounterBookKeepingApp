@@ -15,6 +15,39 @@
         android:theme="@style/Theme.Konter"
         tools:targetApi="31">
         <activity
+            android:name=".katalog.voucher.IndosatKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.voucher.AxisKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.voucher.IndosatKatalogActiivty"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.voucher.XLKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KatalogVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaByuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaSmartfrenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaTriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaAxisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaXLActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kartu.PerdanaIndosatActivity"
+            android:exported="false" />
+        <activity
             android:name=".kartu.PerdanaTelkomselActivity"
             android:exported="false" />
         <activity

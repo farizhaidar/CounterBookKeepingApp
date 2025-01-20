@@ -18,6 +18,7 @@ class UpdateVoucherActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private var voucherId: String? = null
+    private var collectionName: String? = null  // Menyimpan nama koleksi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class UpdateVoucherActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val sellingPrice = intent.getDoubleExtra("sellingPrice", 0.0)
         val costPrice = intent.getDoubleExtra("costPrice", 0.0)
+        collectionName = intent.getStringExtra("collectionName") // Koleksi dari Intent
 
         // Tampilkan data di EditText
         etVoucherName.setText(name)
@@ -44,13 +46,15 @@ class UpdateVoucherActivity : AppCompatActivity() {
 
         // Aksi tombol update
         btnUpdateVoucher.setOnClickListener {
-            updateVoucher()
+            if (collectionName != null) {
+                updateVoucher(collectionName!!)
+            } else {
+                Toast.makeText(this, "Collection name is required", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 
-    private fun updateVoucher() {
+    private fun updateVoucher(collection: String) {
         val name = etVoucherName.text.toString().trim()
         val sellingPrice = etSellingPrice.text.toString().toDoubleOrNull()
         val costPrice = etCostPrice.text.toString().toDoubleOrNull()
@@ -69,7 +73,7 @@ class UpdateVoucherActivity : AppCompatActivity() {
 
         // Update ke Firestore
         voucherId?.let {
-            firestore.collection("v.telkomsel")
+            firestore.collection(collection)  // Gunakan koleksi dari parameter
                 .document(it)
                 .update(updatedData)
                 .addOnSuccessListener {

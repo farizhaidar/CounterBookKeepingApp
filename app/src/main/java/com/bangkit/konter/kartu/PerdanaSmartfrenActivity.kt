@@ -1,4 +1,4 @@
-package com.bangkit.konter
+package com.bangkit.konter.kartu
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,15 +12,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Tasks
-import com.google.firebase.firestore.DocumentSnapshot
+import com.bangkit.konter.R
+import com.bangkit.konter.Voucher
+import com.bangkit.konter.VoucherAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class AksesorisActivity : AppCompatActivity() {
+class PerdanaSmartfrenActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var voucherAdapter: VoucherAdapter
@@ -32,7 +33,7 @@ class AksesorisActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_aksesoris)
+        setContentView(R.layout.activity_perdana_smartfren)
 
         firestore = FirebaseFirestore.getInstance()
         etSearchBar = findViewById(R.id.etSearchBar)
@@ -64,29 +65,23 @@ class AksesorisActivity : AppCompatActivity() {
 
 
     private fun fetchVouchersFromFirestore() {
-        val collections = listOf("headset", "charger") // Nama koleksi
-        val tasks = collections.map { collection ->
-            firestore.collection(collection).get()
-        }
-
-        // Tunggu semua tasks selesai
-        Tasks.whenAllSuccess<QuerySnapshot>(tasks)
-            .addOnSuccessListener { snapshots ->
-                val allDocuments = snapshots.flatMap { it.documents }
-                populateVoucherList(allDocuments)
+        firestore.collection("k.smartfren")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                populateVoucherList(querySnapshot)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to fetch data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
-    private fun populateVoucherList(documents: List<DocumentSnapshot>) {
-        val voucherItems = documents.mapNotNull { doc ->
-            val id = doc.id
+    private fun populateVoucherList(querySnapshot: QuerySnapshot) {
+        val voucherItems = querySnapshot.documents.mapNotNull { doc ->
+            val id = doc.id // Ambil ID dokumen
             val name = doc.getString("name") ?: return@mapNotNull null
             val sellingPrice = doc.getDouble("sellingPrice") ?: return@mapNotNull null
-            val costPrice = doc.getDouble("costPrice") ?: return@mapNotNull null
-            Voucher(id, name, sellingPrice, costPrice)
+            val costPrice = doc.getDouble("costPrice") ?: return@mapNotNull null // Pastikan ini bertipe Double
+            Voucher(id, name, sellingPrice, costPrice) // Pastikan parameter sesuai
         }
         voucherList.clear()
         voucherList.addAll(voucherItems)

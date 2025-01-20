@@ -77,7 +77,7 @@ class AddProductActivity : AppCompatActivity() {
             }
             "Aksesoris" -> {
                 tvSecondLabel.text = "Tipe"
-                val types = arrayOf("Headset", "Charger")
+                val types = arrayOf("Headset", "Charger", "Lainnya")
                 val typeAdapter = ArrayAdapter(
                     this,
                     R.layout.spinner_item, // Custom layout for Spinner items

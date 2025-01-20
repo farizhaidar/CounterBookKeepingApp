@@ -20,38 +20,26 @@ class VoucherActivity : AppCompatActivity() {
         binding = ActivityVoucherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Dummy data
-        val vouchers = listOf("Telkomsel", "XL", "Indosat", "Axis", "Tri", "Smartfren", "Byu")
-
-        // Set button text
-        binding.btnProduct1.text = vouchers.getOrNull(0) ?: "N/A"
-        binding.btnProduct2.text = vouchers.getOrNull(1) ?: "N/A"
-        binding.btnProduct3.text = vouchers.getOrNull(2) ?: "N/A"
-        binding.btnProduct4.text = vouchers.getOrNull(3) ?: "N/A"
-        binding.btnProduct5.text = vouchers.getOrNull(4) ?: "N/A"
-        binding.btnProduct6.text = vouchers.getOrNull(5) ?: "N/A"
-        binding.btnProduct7.text = vouchers.getOrNull(6) ?: "N/A"
-
         // Button click listeners
-        binding.btnProduct1.setOnClickListener {
+        binding.cardTelkomsel.setOnClickListener {
             val intent = Intent(this, TelkomselActivity::class.java)
             startActivity(intent)        }
-        binding.btnProduct2.setOnClickListener {
+        binding.cardXL.setOnClickListener {
             val intent = Intent(this, XLActivity::class.java)
             startActivity(intent)  }
-        binding.btnProduct3.setOnClickListener {
+        binding.cardIndosat.setOnClickListener {
             val intent = Intent(this, IndosatActivity::class.java)
             startActivity(intent)  }
-        binding.btnProduct4.setOnClickListener {
+        binding.cardAxis.setOnClickListener {
             val intent = Intent(this, AxisActivity::class.java)
             startActivity(intent)  }
-        binding.btnProduct5.setOnClickListener {
+        binding.cardTri.setOnClickListener {
             val intent = Intent(this, TriActivity::class.java)
             startActivity(intent)  }
-        binding.btnProduct6.setOnClickListener {
+        binding.cardSmartfren.setOnClickListener {
             val intent = Intent(this, SmartfrenActivity::class.java)
             startActivity(intent)  }
-        binding.btnProduct7.setOnClickListener {
+        binding.cardByu.setOnClickListener {
             val intent = Intent(this, ByuActivity::class.java)
             startActivity(intent)  }
     }

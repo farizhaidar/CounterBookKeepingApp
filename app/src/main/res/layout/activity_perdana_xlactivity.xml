@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".AksesorisActivity">
+    tools:context=".kartu.PerdanaXLActivity">
 
     <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Aksesoris"
+        android:text="Perdana XL"
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"

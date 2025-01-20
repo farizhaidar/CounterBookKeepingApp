@@ -7,4 +7,10 @@
     <color name="background_color">#F5F5F5</color>
     <color name="primary_text_color">#333333</color>
     <color name="secondary_text_color">#757575</color>
+    <color name="mango">#FF5722</color>
+    <color name="indosat">#FFB100</color>
+    <color name="telkomsel">#F20544</color>
+    <color name="xl">#162ede</color>
+    <color name="byu">#71e4fb</color>
+    <color name="smartfren">#fe1616</color>
 </resources>

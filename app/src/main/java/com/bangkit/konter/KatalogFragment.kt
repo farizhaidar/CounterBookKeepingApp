@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.bangkit.konter.katalog.voucher.TelkomselKatalogActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class KatalogFragment : Fragment() {
@@ -21,9 +20,9 @@ class KatalogFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_katalog, container, false)
 
         // Tombol Voucher
-        val btnVoucher: View = view.findViewById(R.id.btnVoucher) // Access with view.findViewById
+        val btnVoucher: View = view.findViewById(R.id.cardVoucher) // Access with view.findViewById
         btnVoucher.setOnClickListener {
-            val intent = Intent(requireContext(), TelkomselKatalogActivity::class.java)
+            val intent = Intent(requireContext(), KatalogVoucherActivity::class.java)
             startActivity(intent)
         }
 
