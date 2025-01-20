@@ -1,5 +1,7 @@
 package com.bangkit.konter
 
+import com.google.firebase.Timestamp
+
 sealed class HistoryItem {
     data class Header(val date: String, val totalProfit: Double,val totalSpending: Double
     ) : HistoryItem()
@@ -9,7 +11,7 @@ sealed class HistoryItem {
         val price: Double,
         val costPrice: Double,
         val profit: Double,
-        val createdAt: String
+        val createdAt: Timestamp
     ) : HistoryItem()
 }
 

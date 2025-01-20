@@ -1,137 +1,290 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F5F5F5"
-    tools:context=".KartuPerdanaActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAFAFA"
+    android:padding="16dp">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kartu Perdana"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FF6200EE"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:orientation="vertical">
 
-    <!-- Grid Layout for Buttons -->
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Kartu Perdana"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTelkomsel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:padding="4dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_below="@+id/tvTitle"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivTelkomsel"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/telkomsel"
+                    android:contentDescription="Voucher"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Telkomsel"
+                    android:textSize="18sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card View for Kartu Perdana -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardXL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardTelkomsel"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivXL"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/xl"
+                    android:contentDescription="Kartu Perdana" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XL"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card View for Aksesoris -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardIndosat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardXL"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivIndosat"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/indosat"
+                    android:contentDescription="Aksesoris" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indosat"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAxis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardIndosat"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivAxis"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/axis"
+                    android:contentDescription="Aksesoris" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Axis"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardAxis"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivTri"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/tri"
+                    android:contentDescription="Aksesoris" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tri"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSmartfren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardTri"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivSmartfren"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/smartfren"
+                    android:contentDescription="Aksesoris" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:text="Smartfren"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>    <androidx.cardview.widget.CardView
+        android:id="@+id/cardByu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:columnCount="2"
-        android:rowCount="4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintVertical_bias="0.06">
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        android:layout_below="@id/cardSmartfren"
+        android:background="@android:color/white">
 
-        <!-- Button 1 -->
-        <Button
-            android:id="@+id/btnProduct1"
-            android:layout_width="0dp"
-            android:layout_height="74dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 1"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-        <!-- Button 2 -->
-        <Button
-            android:id="@+id/btnProduct2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 2"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/ivByu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/byu"
+                android:contentDescription="Aksesoris" />
 
-        <!-- Button 3 -->
-        <Button
-            android:id="@+id/btnProduct3"
-            android:layout_width="0dp"
-            android:layout_height="74dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 3"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Byu"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <!-- Button 4 -->
-        <Button
-            android:id="@+id/btnProduct4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 4"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
-        <!-- Button 5 -->
-        <Button
-            android:id="@+id/btnProduct5"
-            android:layout_width="0dp"
-            android:layout_height="74dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 5"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
-        <!-- Button 6 -->
-        <Button
-            android:id="@+id/btnProduct6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 6"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/btnProduct7"
-            android:layout_width="0dp"
-            android:layout_height="74dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#FF6200EE"
-            android:elevation="6dp"
-            android:text="Voucher 7"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-    </GridLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

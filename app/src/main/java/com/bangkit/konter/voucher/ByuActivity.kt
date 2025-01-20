@@ -17,9 +17,6 @@ import com.bangkit.konter.Voucher
 import com.bangkit.konter.VoucherAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class ByuActivity : AppCompatActivity() {
 
@@ -142,38 +139,36 @@ class ByuActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Input Quantity")
             .setView(dialogView)
-            .setPositiveButton("Simpen") { _, _ ->
+            .setPositiveButton("Simpan") { _, _ ->
                 val quantity = tvQuantity.text.toString().toInt()
 
                 val totalPrice = voucher.sellingPrice * quantity
                 val totalProfit = calculateProfit(voucher.sellingPrice, voucher.costPrice) * quantity
 
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val currentTime = dateFormat.format(Date())
-
-                val voucherData = mapOf(
+                // Data yang akan disimpan ke Firestore
+                val transaksiData = mapOf(
                     "name" to voucher.name.trim(),
                     "price" to totalPrice,
                     "cost_price" to voucher.costPrice * quantity,
                     "profit" to totalProfit,
                     "quantity" to quantity,
-                    "created_at" to currentTime
+                    "created_at" to com.google.firebase.Timestamp.now() // Menggunakan Timestamp
                 )
 
-                saveVoucherToFirestore(voucherData)
+                saveTransactionToFirestore(transaksiData)
             }
             .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
             .show()
     }
 
-    private fun saveVoucherToFirestore(voucherData: Map<String, Any>) {
-        firestore.collection("vouchers")
-            .add(voucherData)
+    private fun saveTransactionToFirestore(transaksiData: Map<String, Any>) {
+        firestore.collection("transaksi") // Menggunakan koleksi "transaksi"
+            .add(transaksiData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Data disimpenn!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Data Disimpen!", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to save voucher: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Gagal menyimpan transaksi: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 

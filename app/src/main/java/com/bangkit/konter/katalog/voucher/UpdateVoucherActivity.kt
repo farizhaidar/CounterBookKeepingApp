@@ -77,7 +77,7 @@ class UpdateVoucherActivity : AppCompatActivity() {
                 .document(it)
                 .update(updatedData)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Voucher updated successfully!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Item updated successfully!", Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 .addOnFailureListener { e ->

@@ -13,12 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Tasks
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class AksesorisActivity : AppCompatActivity() {
 
@@ -61,10 +59,8 @@ class AksesorisActivity : AppCompatActivity() {
         recyclerView.adapter = voucherAdapter
     }
 
-
-
     private fun fetchVouchersFromFirestore() {
-        val collections = listOf("headset", "charger") // Nama koleksi
+        val collections = listOf("headset", "charger", "lainnya") // Nama koleksi
         val tasks = collections.map { collection ->
             firestore.collection(collection).get()
         }
@@ -153,8 +149,8 @@ class AksesorisActivity : AppCompatActivity() {
                 val totalPrice = voucher.sellingPrice * quantity
                 val totalProfit = calculateProfit(voucher.sellingPrice, voucher.costPrice) * quantity
 
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val currentTime = dateFormat.format(Date())
+                val currentTime = System.currentTimeMillis()
+                val timestamp = Timestamp(currentTime / 1000, 0)
 
                 val voucherData = mapOf(
                     "name" to voucher.name.trim(),
@@ -162,7 +158,7 @@ class AksesorisActivity : AppCompatActivity() {
                     "cost_price" to voucher.costPrice * quantity,
                     "profit" to totalProfit,
                     "quantity" to quantity,
-                    "created_at" to currentTime
+                    "created_at" to timestamp  // Ganti menjadi Timestamp
                 )
 
                 saveVoucherToFirestore(voucherData)
@@ -172,7 +168,7 @@ class AksesorisActivity : AppCompatActivity() {
     }
 
     private fun saveVoucherToFirestore(voucherData: Map<String, Any>) {
-        firestore.collection("vouchers")
+        firestore.collection("transaksi")
             .add(voucherData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data disimpenn!", Toast.LENGTH_SHORT).show()

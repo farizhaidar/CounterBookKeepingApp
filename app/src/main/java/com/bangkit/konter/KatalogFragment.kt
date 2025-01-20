@@ -16,18 +16,28 @@ class KatalogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate layout
         val view = inflater.inflate(R.layout.fragment_katalog, container, false)
 
         // Tombol Voucher
-        val btnVoucher: View = view.findViewById(R.id.cardVoucher) // Access with view.findViewById
+        val btnVoucher: View = view.findViewById(R.id.cardVoucher)
         btnVoucher.setOnClickListener {
             val intent = Intent(requireContext(), KatalogVoucherActivity::class.java)
             startActivity(intent)
         }
 
-        // FloatingActionButton untuk menambahkan data baru
-        val fabAddProduct: FloatingActionButton = view.findViewById(R.id.fabAddProduct) // Access with view.findViewById
+        val btnVoucher1: View = view.findViewById(R.id.cardKartuPerdana)
+        btnVoucher1.setOnClickListener {
+            val intent = Intent(requireContext(), KatalogKartuPerdanaActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnVoucher2: View = view.findViewById(R.id.cardAksesoris)
+        btnVoucher2.setOnClickListener {
+            val intent = Intent(requireContext(), KatalogAksesorisActivity::class.java)
+            startActivity(intent)
+        }
+
+        val fabAddProduct: FloatingActionButton = view.findViewById(R.id.fabAddProduct)
         fabAddProduct.setOnClickListener {
             val intent = Intent(requireContext(), AddProductActivity::class.java)
             startActivity(intent)

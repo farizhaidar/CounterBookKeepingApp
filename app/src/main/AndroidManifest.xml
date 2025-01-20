@@ -15,6 +15,42 @@
         android:theme="@style/Theme.Konter"
         tools:targetApi="31">
         <activity
+            android:name=".katalog.aksesoris.LainnyaKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.aksesoris.ChargerKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.aksesoris.HeadsetKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KatalogAksesorisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.ByuKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.SmartfrenKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.TriKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.AxisKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.XLKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.IndosatKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".katalog.perdana.TelkomselKartuKatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KatalogKartuPerdanaActivity"
+            android:exported="false" />
+        <activity
             android:name=".katalog.voucher.ByuKatalogActivity"
             android:exported="false" />
         <activity
@@ -28,9 +64,6 @@
             android:exported="false" />
         <activity
             android:name=".katalog.voucher.AxisKatalogActivity"
-            android:exported="false" />
-        <activity
-            android:name=".katalog.voucher.IndosatKatalogActiivty"
             android:exported="false" />
         <activity
             android:name=".katalog.voucher.XLKatalogActivity"

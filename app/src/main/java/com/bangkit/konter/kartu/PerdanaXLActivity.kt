@@ -15,11 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.konter.R
 import com.bangkit.konter.Voucher
 import com.bangkit.konter.VoucherAdapter
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class PerdanaXLActivity : AppCompatActivity() {
 
@@ -61,8 +59,6 @@ class PerdanaXLActivity : AppCompatActivity() {
         }
         recyclerView.adapter = voucherAdapter
     }
-
-
 
     private fun fetchVouchersFromFirestore() {
         firestore.collection("k.xl")
@@ -143,13 +139,13 @@ class PerdanaXLActivity : AppCompatActivity() {
             .setTitle("Input Quantity")
             .setView(dialogView)
             .setPositiveButton("Simpen") { _, _ ->
-                val quantity = tvQuantity.text.toString().toInt()
 
+                val quantity = tvQuantity.text.toString().toInt()
                 val totalPrice = voucher.sellingPrice * quantity
                 val totalProfit = calculateProfit(voucher.sellingPrice, voucher.costPrice) * quantity
 
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val currentTime = dateFormat.format(Date())
+                // Gunakan Timestamp dari tanggal saat ini
+                val currentTime = Timestamp.now()
 
                 val voucherData = mapOf(
                     "name" to voucher.name.trim(),
@@ -167,7 +163,7 @@ class PerdanaXLActivity : AppCompatActivity() {
     }
 
     private fun saveVoucherToFirestore(voucherData: Map<String, Any>) {
-        firestore.collection("vouchers")
+        firestore.collection("transaksi")
             .add(voucherData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data disimpenn!", Toast.LENGTH_SHORT).show()

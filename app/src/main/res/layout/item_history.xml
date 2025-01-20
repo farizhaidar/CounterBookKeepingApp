@@ -11,44 +11,59 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:orientation="vertical">
+        android:padding="8dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Voucher Name"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingEnd="8dp">
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Price: Rp10,000"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voucher Name"
+                android:textStyle="bold"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvCostPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cost Price: Rp8,000"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: Rp10,000"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tvProfit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Profit: Rp2,000"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvCostPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost Price: Rp8,000"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tvCreatedAt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Created At: 2025-01-17 14:30:00"
-            android:textSize="12sp"
-            android:textColor="@android:color/darker_gray" />
+            <TextView
+                android:id="@+id/tvProfit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profit: Rp2,000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvCreatedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Created At: 2025-01-17 14:30:00"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:contentDescription="Delete Item"
+            android:src="@drawable/baseline_delete" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
