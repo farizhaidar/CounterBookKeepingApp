@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:text="Telkomsel"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/poppinsmedium"
@@ -103,7 +102,6 @@
                 android:layout_height="wrap_content"
                 android:text="XL"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
@@ -141,7 +139,6 @@
                 android:layout_height="wrap_content"
                 android:text="Indosat"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
@@ -178,7 +175,6 @@
                 android:layout_height="wrap_content"
                 android:text="Axis"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
@@ -215,7 +211,6 @@
                 android:layout_height="wrap_content"
                 android:text="Tri"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
@@ -250,11 +245,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Smartfren"
-                android:textSize="18sp"
-                android:textColor="#3E3E3E"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:layout_marginStart="16dp" />
+                android:text="Smartfren"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>    <androidx.cardview.widget.CardView
     android:id="@+id/cardByu"
@@ -287,7 +281,6 @@
             android:layout_height="wrap_content"
             android:text="Byu"
             android:textSize="18sp"
-            android:textColor="#3E3E3E"
             android:fontFamily="@font/poppinsmedium"
             android:layout_marginStart="16dp" />
     </LinearLayout>

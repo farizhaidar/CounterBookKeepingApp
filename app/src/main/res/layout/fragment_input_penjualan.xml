@@ -54,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:text="Voucher"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/poppinsmedium"
@@ -95,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:text="Kartu Perdana"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
@@ -133,7 +131,6 @@
                 android:layout_height="wrap_content"
                 android:text="Aksesoris"
                 android:textSize="18sp"
-                android:textColor="#3E3E3E"
                 android:fontFamily="@font/poppinsmedium"
                 android:layout_marginStart="16dp" />
         </LinearLayout>

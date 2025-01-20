@@ -17,7 +17,7 @@ import com.bangkit.konter.Voucher
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AxisKatalogActivity : AppCompatActivity() {
+class SmartfrenKatalogActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var katalogAdapter: KatalogAdapter
@@ -38,7 +38,7 @@ class AxisKatalogActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         tvTitle = findViewById(R.id.tvTitle)
 
-        tvTitle.text = "Axis"
+        tvTitle.text = "Smartfren"
         etSearchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -61,7 +61,7 @@ class AxisKatalogActivity : AppCompatActivity() {
                     putExtra("name", voucher.name)
                     putExtra("sellingPrice", voucher.sellingPrice)
                     putExtra("costPrice", voucher.costPrice)
-                    putExtra("collectionName", "v.axis")  // Kirimkan koleksi
+                    putExtra("collectionName", "v.smartfren")  // Kirimkan koleksi
                 }
                 startActivity(intent)
             },
@@ -81,7 +81,7 @@ class AxisKatalogActivity : AppCompatActivity() {
     }
 
     private fun fetchVouchersFromFirestore() {
-        val telkomselTask = firestore.collection("v.axis").get()
+        val telkomselTask = firestore.collection("v.smartfren").get()
 
         telkomselTask
             .addOnSuccessListener { telkomselData ->
@@ -94,7 +94,7 @@ class AxisKatalogActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        fetchVouchersFromFirestore()
+        fetchVouchersFromFirestore()  // Mengambil data dari firestore saat kembali ke halaman
     }
 
     private fun populateVoucherList(documents: List<DocumentSnapshot>) {
@@ -137,7 +137,7 @@ class AxisKatalogActivity : AppCompatActivity() {
     }
 
     private fun deleteVoucherFromFirestore(voucherId: String) {
-        firestore.collection("v.axis")
+        firestore.collection("v.smartfren")
             .document(voucherId)
             .delete()
             .addOnSuccessListener {
